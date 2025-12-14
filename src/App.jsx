@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from "react";
 import "./styles/app.css";
-import DeepDiveHome from ".src/pages/DeepDiveHome.jsx";
-import DeepDiveLesson from ".src/pages/DeepDiveLesson.jsx";
-import DeepDiveFinish from "src/pages/DeepDiveFinish.jsx";
+import DeepDiveHome from "./pages/DeepDiveHome.jsx";
+import DeepDiveLesson from "./pages/DeepDiveLesson.jsx";
+import DeepDiveFinish from "./pages/DeepDiveFinish.jsx";
 
 const SCREENS = {
   HOME: "HOME",
