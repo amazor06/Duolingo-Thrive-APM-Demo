@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import "./styles/app.css";
+import "./styles/App.css";
 import DeepDiveHome from "./pages/DeepDiveHome.jsx";
 import DeepDiveLesson from "./pages/DeepDiveLesson.jsx";
 import DeepDiveFinish from "./pages/DeepDiveFinish.jsx";
