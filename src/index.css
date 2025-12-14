@@ -1,0 +1,439 @@
+:root{
+  --duo-green: #58cc02;
+  --duo-green-dark: #46a302;
+  --duo-blue: #1CB0F6; /* Distinct color for Deep Dive feature */
+  --duo-yellow: #FFC000; /* Color for completed lessons */
+  --bg: #f7f7f7;
+  --text: #2b2b2b;
+  --muted: #6e6e6e;
+  --border: #e7e7e7;
+  --soft: #f5f5f5;
+  --radius: 18px;
+  --shadow: 0 10px 24px rgba(0,0,0,0.08);
+  --font: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{
+  margin:0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.screen{
+  min-height: 100vh;
+  display:flex;
+  flex-direction: column;
+}
+
+/* --- Top Strip (Header) --- */
+.topStrip{
+  padding: 10px 14px 8px;
+  border-bottom: 2px solid var(--border);
+  background: #fff;
+  z-index: 2;
+}
+
+.weekRow{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.day{
+  width: 36px;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  gap: 6px;
+}
+.dayDot{
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #ededed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dayDot.on{
+  background: var(--duo-green);
+  box-shadow: 0 0 0 4px rgba(88,204,2,0.18);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+}
+.dayLabel{
+  font-size: 12px;
+  color: #9b9b9b;
+  font-weight: 700;
+}
+.flag{
+  margin-left: auto;
+  opacity: 0.7;
+}
+.statsRow{
+  margin-top: 10px;
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  font-weight: 800;
+}
+.statPill{
+  border: 2px solid var(--border);
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 10px;
+  color: #444;
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+/* --- Content Area --- */
+.content{
+  flex: 1;
+  padding: 14px;
+  display:flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* --- Unit Banner --- */
+.unitBanner{
+  background: rgba(88,204,2,0.25);
+  border: 2px solid rgba(88,204,2,0.35);
+  border-radius: 16px;
+  padding: 14px;
+  display:flex;
+  align-items: center;
+  gap: 12px;
+}
+.unitLeft{ flex: 1; }
+.unitKicker{
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(30,90,0,0.7);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.unitTitle{
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #1f5c00;
+}
+.unitBtn{
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  border: 2px solid rgba(88,204,2,0.35);
+  background: rgba(255,255,255,0.7);
+  font-size: 22px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Path Area --- */
+.pathArea{
+  position: relative;
+  height: 560px; /* FIX: Adjusted height to ensure nodes are visible above bottom nav */
+  border-radius: 22px;
+  background: #fff;
+  border: 2px solid var(--border);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Dotted guide line */
+.pathLine{
+  position:absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events:none;
+}
+
+/* --- Nodes --- */
+.node{
+  position:absolute;
+  width: 84px;
+  height: 84px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform 120ms ease, filter 120ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.node:active{ transform: translate(-50%, -50%) scale(0.95); }
+
+/* Normal Node (Lesson) */
+.nodeNormal{
+  background: #bff0c2;
+  box-shadow: inset 0 -8px 0 rgba(0,0,0,0.08);
+}
+.nodeNormal .nodeIcon{
+  font-size: 30px;
+  font-weight: 1000;
+  color: #2b7a00;
+}
+.nodeNormal.completed {
+    background: var(--duo-yellow); 
+}
+.nodeNormal.completed .nodeIcon {
+    color: #a06e00;
+}
+
+/* Chest Node (Review/Challenge) */
+.nodeChest{
+  background: #ffe4b6; 
+  box-shadow: inset 0 -8px 0 rgba(0,0,0,0.08);
+}
+.nodeChest .nodeIcon{
+  font-size: 30px;
+}
+
+/* Deep Dive Node (The Feature) */
+.nodeDeepDive{
+  width: 120px;
+  height: 120px;
+  background: var(--duo-blue); /* FIX: Distinct Duolingo Blue */
+  border-radius: 20px; /* Square shape */
+  box-shadow: inset 0 -10px 0 rgba(0,0,0,0.12), 0 10px 18px rgba(28,176,246,0.35);
+  color: white;
+  z-index: 5; /* Ensure visibility over the path */
+}
+.deepDiveInner{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  height: 100%;
+  font-weight: 1000;
+  line-height: 1.05;
+}
+.deepDiveTop{ font-size: 16px; }
+.deepDiveBottom{ font-size: 18px; }
+
+/* disabled look */
+.node:disabled{
+  cursor:not-allowed;
+  filter: grayscale(1);
+  opacity: 0.5;
+  box-shadow: inset 0 -8px 0 rgba(0,0,0,0.15);
+}
+
+/* Lock Overlay */
+.lockOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.2); 
+    border-radius: 999px;
+    font-size: 30px;
+    z-index: 2;
+}
+.nodeDeepDive .lockOverlay {
+    border-radius: 20px; 
+}
+
+/* Progress Stars */
+.progressStars {
+    position: absolute;
+    bottom: -15px; 
+    display: flex;
+    gap: 3px;
+    font-size: 14px;
+}
+.miniStar {
+    opacity: 0.3;
+}
+.miniStar.filled {
+    opacity: 1;
+    color: var(--duo-yellow); 
+    filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
+}
+
+/* simple decor blocks (updated to use emojis) */
+.decor{ position:absolute; pointer-events:none; z-index: 1; }
+.decor.book{
+    left: 18px;
+    top: 300px;
+    font-size: 40px;
+    opacity: 0.5;
+}
+.decor.character{
+    left: 32px;
+    top: 420px;
+    font-size: 80px;
+    opacity: 0.2;
+}
+.decor.sparkle1{
+    right: 28px;
+    top: 380px;
+    font-size: 24px;
+    opacity: 0.7;
+    color: #ffda6a;
+}
+.decor.sparkle2{
+    right: 50px;
+    top: 150px;
+    font-size: 16px;
+    opacity: 0.5;
+    color: #fff0b3;
+}
+
+
+/* --- Bottom Nav --- */
+.bottomNav{
+  height: 76px;
+  border-top: 2px solid var(--border);
+  background: #fff;
+  display:flex;
+  align-items:center;
+  justify-content: space-around;
+  padding: 8px 10px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  z-index: 10; /* FIX: Ensure navigation is on top */
+}
+
+.navBtn{
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: var(--muted);
+}
+.navBtn.active{
+  background: rgba(88,204,2,0.18);
+  color: var(--duo-green-dark);
+}
+.navIcon{ font-size: 24px; }
+.navLabel { font-size: 10px; font-weight: 700; }
+
+/* --- Deep Dive Screen Styles --- */
+.deepDiveHeader{
+  padding: 14px;
+  border-bottom: 2px solid var(--border);
+  background: #fff;
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+.backBtn{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  cursor:pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.deepDiveHeaderText{ flex: 1; }
+.deepDiveH1{ font-weight: 1000; font-size: 18px; margin: 0; }
+.deepDiveH2{ color: var(--muted); font-weight: 800; font-size: 13px; margin-top: 2px; }
+.deepDiveBody{
+  flex: 1;
+  padding: 16px;
+  display:flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.card{
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+.card.subtle{
+  box-shadow: none;
+  background: #fbfbfb;
+  border-color: #f0f0f0;
+}
+.card.featured {
+    border-color: var(--duo-blue);
+    box-shadow: 0 10px 24px rgba(28,176,246,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.cardTitle{ margin:0; font-size: 18px; font-weight: 1000; }
+.cardSub{ margin: 8px 0 0; color: var(--muted); font-weight: 700; line-height: 1.35; }
+.progressBar{
+    margin-top: 14px;
+    width: 100%;
+    height: 10px;
+    background: var(--soft);
+    border-radius: 999px;
+    overflow: hidden;
+}
+.progressFill{
+    height: 100%;
+    background: var(--duo-green);
+    border-radius: 999px;
+}
+.progressLabel {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    margin: 8px 0 0;
+}
+.bulletList {
+    margin: 10px 0 0 15px;
+    padding: 0;
+    list-style-type: none; 
+}
+.bulletList li {
+    position: relative;
+    padding-left: 1.2em;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+.bulletList li::before {
+    content: "•"; 
+    position: absolute;
+    left: 0;
+    color: var(--duo-green);
+    font-weight: 900;
+}
+.primaryBtn{
+  margin-top: 14px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: none;
+  background: var(--duo-green);
+  color: white;
+  font-weight: 1000;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: inset 0 -6px 0 rgba(0,0,0,0.12);
+}
+.primaryBtn:hover{ background: var(--duo-green-dark); }
+.primaryBtn:active{ transform: translateY(2px); box-shadow: inset 0 -4px 0 rgba(0,0,0,0.12); }
