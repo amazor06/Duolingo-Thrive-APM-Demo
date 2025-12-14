@@ -1,92 +1,84 @@
-Daily Deep Dive
-Duolingo APM Thrive — Take-Home Product Exercise
+# Daily Deep Dive
+## Duolingo APM Thrive — Take-Home Product Exercise
 
 This repository contains a UI and interaction prototype built as part of the Duolingo APM Thrive take-home product exercise.
 
 The project explores a product concept focused on improving learner retention and comprehension through personalized daily review, using minimal scope to validate the idea.
 
-Product Idea
+---
 
-Problem
+## Product Idea
+
+**Problem**  
 Learners disengage when daily sessions feel unfocused and disconnected from prior mistakes, leading to lower return rates.
 
-Insight
+**Insight**  
 Recent learner errors are a high-signal input for personalization.
 
-Hypothesis
+**Hypothesis**  
 If users begin their session with a short, targeted review of what they struggled with yesterday, they will return more frequently and improve accuracy on reviewed concepts.
 
-Solution: Daily Deep Dive
+---
+
+## Solution: Daily Deep Dive
 
 A short review flow shown at the start of a session.
 
-Flow
-
-Personalized recap of prior struggles (mocked)
-
-Targeted review questions
-
-Forced mastery through retry-until-correct
-
-Clear completion state
+**Flow**
+1. Personalized recap of prior struggles (mocked)
+2. Targeted review questions
+3. Forced mastery through retry-until-correct
+4. Clear completion state
 
 The prototype uses mock Spanish learning content to simulate personalization.
 
-Interaction Design
+---
 
-Incorrect answers are marked and require retry
+## Interaction Design
 
-Users cannot continue until correct
+- Incorrect answers are marked and require retry
+- Users cannot continue until correct
+- Progress feedback reinforces momentum
+- Designed to be short, focused, and repeatable
 
-Progress feedback reinforces momentum
+---
 
-Designed to be short, focused, and repeatable
+## Success Metrics
 
-Success Metrics
+**Primary**
+- D7 retention
+- Daily return rate
 
-Primary:
+**Secondary**
+- Session completion rate
+- Accuracy improvement
 
-D7 retention
+**Guardrails**
+- Frustration or quit rate
+- Session length inflation
 
-Daily return rate
+---
 
-Secondary:
+## Experiment Design
 
-Session completion rate
+**Control:** Standard experience  
+**Test:** Daily Deep Dive shown once per day at session start
 
-Accuracy improvement
+---
 
-Guardrails:
+## Tech Stack
 
-Frustration or quit rate
-
-Session length inflation
-
-Experiment Design
-
-Control: Standard experience
-Test: Daily Deep Dive shown once per day at session start
-
-Tech Stack
-
-React (Vite)
-
-JavaScript
-
-CSS
-
-Deployed on Vercel
+- React (Vite)
+- JavaScript
+- CSS
+- Deployed on Vercel
 
 This prototype is intentionally UI and logic only, with mocked data and no backend.
 
-Running Locally
+---
+
+## Running Locally
+
+```bash
 npm install
 npm run dev
-
-Live Demo
-
-Add Vercel deployment URL here
-
-Scope and Tradeoffs
-
-Personalization and content are mocked. Scope was intentionally limited to the smallest experience needed to test the product hypothesis.
