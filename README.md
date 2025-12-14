@@ -1,16 +1,92 @@
-# React + Vite
+Daily Deep Dive
+Duolingo APM Thrive — Take-Home Product Exercise
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a UI and interaction prototype built as part of the Duolingo APM Thrive take-home product exercise.
 
-Currently, two official plugins are available:
+The project explores a product concept focused on improving learner retention and comprehension through personalized daily review, using minimal scope to validate the idea.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Product Idea
 
-## React Compiler
+Problem
+Learners disengage when daily sessions feel unfocused and disconnected from prior mistakes, leading to lower return rates.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Insight
+Recent learner errors are a high-signal input for personalization.
 
-## Expanding the ESLint configuration
+Hypothesis
+If users begin their session with a short, targeted review of what they struggled with yesterday, they will return more frequently and improve accuracy on reviewed concepts.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Solution: Daily Deep Dive
+
+A short review flow shown at the start of a session.
+
+Flow
+
+Personalized recap of prior struggles (mocked)
+
+Targeted review questions
+
+Forced mastery through retry-until-correct
+
+Clear completion state
+
+The prototype uses mock Spanish learning content to simulate personalization.
+
+Interaction Design
+
+Incorrect answers are marked and require retry
+
+Users cannot continue until correct
+
+Progress feedback reinforces momentum
+
+Designed to be short, focused, and repeatable
+
+Success Metrics
+
+Primary:
+
+D7 retention
+
+Daily return rate
+
+Secondary:
+
+Session completion rate
+
+Accuracy improvement
+
+Guardrails:
+
+Frustration or quit rate
+
+Session length inflation
+
+Experiment Design
+
+Control: Standard experience
+Test: Daily Deep Dive shown once per day at session start
+
+Tech Stack
+
+React (Vite)
+
+JavaScript
+
+CSS
+
+Deployed on Vercel
+
+This prototype is intentionally UI and logic only, with mocked data and no backend.
+
+Running Locally
+npm install
+npm run dev
+
+Live Demo
+
+Add Vercel deployment URL here
+
+Scope and Tradeoffs
+
+Personalization and content are mocked. Scope was intentionally limited to the smallest experience needed to test the product hypothesis.
